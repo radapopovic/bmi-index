@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+
+        #myProgress {
+            width: 20%;
+            background-color: #ddd;
+        }
+
+        #myBar {
+            width: 5%;
+            height: 30px;
+            background-color: fuchsia;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+        }
+    </style>
+
+    <div>
+        <br>
+        Tezina: <input type="number" id="tez">kg
+        <br><br>Visina <input type="number" id="vis">m
+        <br><br><input type="button" value="IZRACUNAJ" onclick="izracunaj ()">
+        <br><br>BMI: <input type="number" name="" id="ind">
+        <br><br>
+    </div>
+    <div id="myProgress">
+        <div id="myBar">0</div>
+    </div>
+
+    <script>
+        function izracunaj() {
+
+            t = Number(document.getElementById("tez").value);
+            v = Number(document.getElementById("vis").value);
+            if ((t > 45 && t < 300) && (v > 0.5 && v < 2.5)) {
+                bmi = t / (v * v);
+                bmi = bmi.toFixed(1);
+
+                document.getElementById("ind").value = bmi;
+                bar = document.getElementById("myBar");
+                bar.style.width = bmi + '%';
+                bar.innerHTML = bmi;
+
+                document.getElementById("ind").value = bmi;
+                switch (true) {
+                    case (bmi <= 20):
+                        window.alert("BMI je nizak :(");
+                        break;
+                    case (bmi > 20 && bmi < 25.5):
+                        window.alert("BMI je idealan :(");
+                        break;
+                    case (bmi >= 25.5):
+                        window.alert("BMI je visok :(");
+                        break;
+
+                    default: window.alert("BMI GRESKA");
+
+                }
+                switch (true) {
+                    case (bmi <= 20):
+                    
+                        document.getElementById("myBar").style.backgroundColor = "yellow";
+                        break;
+                    case (bmi > 20 && bmi < 25.5):
+                        document.getElementById("myBar").style.backgroundColor = "green";
+                        break;
+                    case (bmi >= 25.5):
+                        document.getElementById("myBar").style.backgroundColor = "red";
+                        break;
+
+                    default: window.alert("BMI GRESKA");
+
+                }
+            }
+            else {
+                window.alert("upisali ste pogresne podatke");
+            }
+
+
+        }
+
+    </script>
+
+</body>
+
+</html>
